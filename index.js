@@ -3,15 +3,13 @@ console.log(buttons)
 buttons.forEach(button => {
     button.addEventListener("click", (e) => {
         handleSound(e.target.innerHTML);
-        addAnimation(e.target.innerHTML);
-        removeAnimation();
+        handleAnimation(e.target.innerHTML);
     });
 })
 
 document.addEventListener("keydown", (e) => {
     handleSound(e.key);
-    addAnimation(e.key);
-    removeAnimation();
+    handleAnimation(e.key);
 
 })
 
@@ -56,15 +54,12 @@ function handleSound(sound) {
             break;
     }
 }
-function addAnimation(selected) {
+function handleAnimation(selected) {
     let button = document.querySelector(`.${selected}`);
     button.classList.add('pressed');
-}
-function removeAnimation() {
-    let animatedButton = document.querySelector(".pressed");
     setTimeout(() => {
-        animatedButton.classList.remove('pressed')
+        button.classList.remove('pressed');
     }, 100);
-
 }
+
 
